@@ -51,8 +51,8 @@ function AddCourse() {
       <input type="text" name="courseName" value={formData.courseName} onChange={handleChange}  required style={{width:"100%  "}}/>
       <label>instructor : </label>
       <input type="text" name="tutor" value={formData.tutor} onChange={handleChange}  required style={{width:"100%"}}/>
-      <label>price : </label>
-      <input type="number" name="price" value={formData.price} onChange={handleChange}  required style={{width:"100%"}}/>
+      {/*<label>price : </label>
+      <input type="number" name="price" value={formData.price} onChange={handleChange}  required style={{width:"100%"}}/>*/}
       <label>description : </label>
       <input type="text" name="description" value={formData.description} onChange={handleChange}  required style={{width:"100%"}}/>
       <label>Video Link : </label>

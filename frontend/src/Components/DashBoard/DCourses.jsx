@@ -44,20 +44,28 @@ function Courses() {
 
   function deleteCourse(courseId) {
     axios
-      .delete("http://localhost:8800/delete", {
-        data: { courseId: courseId },
-      })
+      .delete(`http://localhost:8080/api/courses/${courseId}`)
       .then((response) => {
         console.log("Delete successful:", response.data);
-        console.log(courses);
+  
+        // Refetch the courses after deleting
+        axios
+          .get('http://localhost:8080/api/courses')
+          .then((response) => {
+            setCourses(response.data); // Update the UI
+          })
+          .catch((error) => {
+            console.error("Error fetching updated data:", error);
+          });
       })
       .catch((error) => {
         console.error("Delete error:", error);
       });
-    setDeleted(true);
-    setCid(-1);
+    
+    setCid(-1); // Optionally reset the course ID
   }
-
+  
+  
   function editCourse(course_id) {
     navigate(`/editCourse/${course_id}`);
   }
@@ -97,14 +105,14 @@ function Courses() {
                         <li className="completed" style={{ marginTop: "10px",backgroundColor:'white',color:'black' }}>
                           <p >{course.course_name}</p>
                           <div style={{ width: "50px", display: "flex" }}>
-                              <button
-                                // onClick={() => {setOpenModal(true);setCid(course.course_id)}}
+                              {/* <button
+                                 onClick={() => {setOpenModal(true);setCid(course.course_id)}}
 	
                                 style={{ marginLeft: "-100px",marginRight:'40px' ,backgroundColor:'white'}}
                                 className="delete-button"
                               >
                               <FontAwesomeIcon icon={faTrash}></FontAwesomeIcon>
-                            </button>
+                            </button> */}
 
                             <button
                               onClick={() => editCourse(course.course_id)}

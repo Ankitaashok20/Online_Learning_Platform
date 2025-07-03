@@ -126,7 +126,7 @@ function Home() {
               <img src={c4} alt="" />
               <div className="details">
                 <p>Updated 12/04/25</p>
-                <h6>Data Structures And Algorithms COurse</h6>
+                <h6>Data Structures And Algorithms Course</h6>
                 <div className="star">
                   {[...Array(5)].map((_, index) => (
                     <FontAwesomeIcon key={index} icon={faStar} className="i" />
@@ -176,7 +176,7 @@ function Home() {
               </div>
             </div>
           </div>
-          {!authToken ? (
+           {/*{!authToken ? (
             <div className="form">
               <h3>Create Free Account NOW!</h3>
               <input type="text" placeholder="Name" name="" id="" />
@@ -192,6 +192,7 @@ function Home() {
           ) : (
             <></>
           )}
+            */}
         </section>
         <Footer />
       </div>

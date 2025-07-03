@@ -1,4 +1,5 @@
 package com.example.demo.entity;
+
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -8,28 +9,48 @@ import jakarta.persistence.*;
 
 @Entity
 public class Course {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @JsonProperty("course_id")
-    private Long course_id;
-    @JsonProperty("course_name")
-    private String course_name;
-    private int price;
-    @JsonProperty("instructor")
-    private String instructor;
-    private String description;
-    @JsonProperty("p_link")
-    private String p_link;
-    @JsonProperty("y_link")
-    private String y_link;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@JsonProperty("course_id")
+	private Long course_id;
+	@JsonProperty("course_name")
+	private String course_name;
+	private int price;
+	@JsonProperty("instructor")
+	private String instructor;
+	private String description;
+	@JsonProperty("p_link")
+	private String p_link;
+	@JsonProperty("y_link")
+	private String y_link;
 
-    @OneToMany(mappedBy = "course", cascade = CascadeType.ALL)
-    @JsonIgnore
-    private List<Feedback> feedbacks;
-    
-    @OneToMany(mappedBy = "course")
-    @JsonIgnore
-    private List<Questions> questions;
+	@OneToMany(mappedBy = "course", cascade = CascadeType.ALL, orphanRemoval = true)
+	@JsonIgnore
+	private List<Feedback> feedbacks;
+
+	@OneToMany(mappedBy = "course", cascade = CascadeType.ALL, orphanRemoval = true)
+	@JsonIgnore
+	private List<Questions> questions;
+
+	@OneToMany(mappedBy = "course", cascade = CascadeType.ALL, orphanRemoval = true)
+	@JsonIgnore
+	private List<Discussion> discussions;
+
+	@OneToMany(mappedBy = "course", cascade = CascadeType.ALL, orphanRemoval = true)
+	@JsonIgnore
+	private List<Assessment> assessments;
+
+	@OneToMany(mappedBy = "course", cascade = CascadeType.ALL, orphanRemoval = true)
+	@JsonIgnore
+	private List<Cart> carts;
+
+	@OneToMany(mappedBy = "course", cascade = CascadeType.ALL, orphanRemoval = true)
+	@JsonIgnore
+	private List<Learning> learnings;
+
+	@OneToMany(mappedBy = "course", cascade = CascadeType.ALL, orphanRemoval = true)
+	@JsonIgnore
+	private List<Progress> progresses;
 
 	public List<Questions> getQuestions() {
 		return questions;
@@ -103,5 +124,4 @@ public class Course {
 		this.instructor = tutor;
 	}
 
-    
 }

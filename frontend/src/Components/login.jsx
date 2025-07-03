@@ -37,7 +37,14 @@ function Login() {
           localStorage.setItem("id", ud["id"]);
           console.log("Hello");
           setUser({ name: ud["name"], email: email, id: ud["id"] });
-          navigate("/courses");
+          
+          if(email==='haniisthebest4@gmail.com'){
+            navigate("/dashboard");
+          }
+          else{
+            navigate("/courses");
+
+          }
         } else {
           setError("An error occurred while fetching user details.");
         }

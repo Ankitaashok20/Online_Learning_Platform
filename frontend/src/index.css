@@ -17,7 +17,7 @@ code {
 }
 
 .auth {
-  background-image: url("https://www.yudiz.com/codepen/animation-form/banner.jpg");
+  background-image: url("./Components/images/hello.jpg");
   background-size: cover;
   background-position: center;
   height: 100vh;
@@ -27,7 +27,7 @@ code {
 }
 
 .registration-auth {
-  background-image: url("https://www.yudiz.com/codepen/animation-form/banner.jpg");
+  background-image: url("./Components/images/hello.jpg");
   background-size: cover;
   background-position: center;
   height: 100vh;
@@ -766,7 +766,7 @@ img {
 }
 
 .add {
-  background-image: url("https://www.yudiz.com/codepen/animation-form/banner.jpg");
+  background-image: url("./Components/images/hello3.jpg");
 
   align-items: center;
 

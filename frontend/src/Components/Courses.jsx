@@ -98,7 +98,7 @@ return (
                   : course.courseName
                 }
               </h3>
-              <p className="course-description" style={{color:"grey"}}>Price: Rs.{course.price}</p>
+            
               <p className="course-description">Tutorial by {course.instructor}</p>
             </div> 
           {enrolled.includes(course.course_id) ? (<button className="enroll-button" style={{color:'#F4D03F',backgroundColor:'darkblue',fontWeight:'bold'}} onClick={() => navigate("/learnings")}>

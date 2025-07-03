@@ -9,7 +9,7 @@ function SideBar(props){
         
         <Link to={"/dashboard"} className="brand a">
           <img src={img1} alt=""/>
-          <span className="text" id="admin">LMS Admin</span>
+          <span className="text" id="admin">Admin</span>
           </Link>
           
           <ul className="side-menu">
