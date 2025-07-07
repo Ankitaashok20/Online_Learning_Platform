@@ -83,7 +83,7 @@ git clone https://github.com/Ankitaashok20/Online_Learning_Platform.git
 4.Set up the MySQL database and configure the connection.
 
 ---
-###Usage
+##Usage
 
 1.Visit the application on http://localhost:3000.
 
