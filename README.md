@@ -78,16 +78,16 @@ This platform provides a seamless experience for both **students** and **instruc
 ### ⚙️Setup
 
 -1. Clone the repo:
-git clone https://github.com/Ankitaashok20/Online_Learning_Platform.git
--2.Navigate to the frontend and backend folders and follow their respective setup instructions.
--3.Run the frontend (React.js) on http://localhost:3000 and the backend (Spring Boot) on http://localhost:8080.
--4.Set up the MySQL database and configure the connection.
+git clone https://github.com/Ankitaashok20/Online_Learning_Platform.git  
+2.Navigate to the frontend and backend folders and follow their respective setup instructions.  
+-3.Run the frontend (React.js) on http://localhost:3000 and the backend (Spring Boot) on http://localhost:8080.  
+-4.Set up the MySQL database and configure the connection.  
 
 ---
 ###Usage
 
--1.Visit the application on http://localhost:3000.
--2.As an admin, you can manage courses, create assessments, and monitor user progress.
--To access the admin dashboard, if your application is running locally, you can navigate to http://localhost:3000/dashboard.
--3.Users can register, log in, view courses, take assessments, and receive certificates.
+-1.Visit the application on http://localhost:3000.  
+-2.As an admin, you can manage courses, create assessments, and monitor user progress.  
+-To access the admin dashboard, if your application is running locally, you can navigate to http://localhost:3000/dashboard.  
+-3.Users can register, log in, view courses, take assessments, and receive certificates.  
 
