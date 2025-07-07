@@ -74,4 +74,9 @@ public class CourseService {
             System.out.println("Course not found");
         }
     }
+
+    @Transactional
+    public void deleteAllCourses() {
+        courseRepository.deleteAll();
+    }
 }

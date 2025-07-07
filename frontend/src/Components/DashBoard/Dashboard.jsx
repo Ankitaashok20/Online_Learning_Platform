@@ -2,18 +2,27 @@ import React, {useState,useEffect} from 'react';
 import './dstyle.css';
 import SideBar from './SideBar';
 import Navbar from './Navbar';
+import { useNavigate } from 'react-router-dom';
 function Dashboard() {
   // const [dashboard , setDashboard] = useState(0);
   
   const [userscount , setUserscount] = useState(0);
   const [coursescount , setCoursescount] = useState(0);
   const[enrolled , setEnrolled] = useState(0);
+  const navigate = useNavigate();
 
   useEffect(()=>{
+    // Admin access control
+    const id = localStorage.getItem("id");
+    const token = localStorage.getItem("token");
+    if (!(id === "admin" && token === "admin-token")) {
+      navigate("/login");
+      return;
+    }
     fetch("http://localhost:8080/api/users").then((data)=>data.json()).then((res)=>setUserscount(res.length));
     fetch("http://localhost:8080/api/courses").then((data)=>data.json()).then((res)=>setCoursescount(res.length));
     fetch("http://localhost:8080/api/learning").then((data)=>data.json()).then((res)=>setEnrolled(res.length));
-  },[])
+  },[navigate])
 
   return (
     <body style={{backgroundColor:"#eee"}}>

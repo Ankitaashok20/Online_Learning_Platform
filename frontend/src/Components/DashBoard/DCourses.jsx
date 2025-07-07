@@ -15,8 +15,8 @@ function Courses() {
   const navigate = useNavigate();
   const [isDeleted, setDeleted] = useState(false);
   const [openModal, setOpenModal] = useState(false);
-
-  const[cid , setCid] = useState(-1);
+  const [openDeleteAllModal, setOpenDeleteAllModal] = useState(false);
+  const [cid, setCid] = useState(-1);
 
   const showModal = () => {
     setOpenModal(true);
@@ -72,6 +72,18 @@ function Courses() {
   function addquestions(course_id){
     navigate(`/addquestions/${course_id}`)
   }
+
+  function deleteAllCourses() {
+    axios
+      .delete(`http://localhost:8080/api/courses/all`)
+      .then((response) => {
+        setCourses([]); // Clear UI
+      })
+      .catch((error) => {
+        console.error("Delete all error:", error);
+      });
+  }
+
   return (
     <>
       <body>
@@ -84,53 +96,65 @@ function Courses() {
                 <div id="course" className="todo">
                   <div className="head" style={{ marginTop: "-100px" }}>
                     <h3 style={{color:'white'}}>Courses</h3>
-                    <button
-                      onClick={() => navigate("/addcourse")}
-                      style={{
-                        backgroundColor: "darkblue",
-                        borderRadius: "10px",
-                        color: "white",
-                        border: "none",
-                        padding: "8px",
-                        fontWeight: "500",
-                      }}
-                    >
-                      Add Course{" "}
-                      <FontAwesomeIcon icon={faPlus}></FontAwesomeIcon>{" "}
-                    </button>
+                    <div style={{ display: 'flex', gap: '10px' }}>
+                      <button
+                        onClick={() => navigate("/addcourse")}
+                        style={{
+                          backgroundColor: "darkblue",
+                          borderRadius: "10px",
+                          color: "white",
+                          border: "none",
+                          padding: "8px",
+                          fontWeight: "500",
+                        }}
+                      >
+                        Add Course{" "}
+                        <FontAwesomeIcon icon={faPlus}></FontAwesomeIcon>{" "}
+                      </button>
+                      <button
+                        onClick={() => setOpenDeleteAllModal(true)}
+                        style={{
+                          backgroundColor: "#d9534f",
+                          borderRadius: "10px",
+                          color: "white",
+                          border: "none",
+                          padding: "8px",
+                          fontWeight: "500",
+                        }}
+                      >
+                        Delete All Courses <FontAwesomeIcon icon={faTrash} />
+                      </button>
+                    </div>
                   </div>
                   <ul className="todo-list">
                     {courses.map((course) => (
                       <div key={course.course_id}>
                         <li className="completed" style={{ marginTop: "10px",backgroundColor:'white',color:'black' }}>
                           <p >{course.course_name}</p>
-                          <div style={{ width: "50px", display: "flex" }}>
-                              {/* <button
-                                 onClick={() => {setOpenModal(true);setCid(course.course_id)}}
-	
-                                style={{ marginLeft: "-100px",marginRight:'40px' ,backgroundColor:'white'}}
-                                className="delete-button"
-                              >
-                              <FontAwesomeIcon icon={faTrash}></FontAwesomeIcon>
-                            </button> */}
-
+                          <div style={{ width: "100px", display: "flex", gap: '10px' }}>
                             <button
                               onClick={() => editCourse(course.course_id)}
-                              style={{ marginRight: "40px" ,backgroundColor:'white'}}
+                              style={{ marginRight: "10px", backgroundColor:'white'}}
                               className="edit-button"
                             >
-                              <FontAwesomeIcon   icon={faEdit}></FontAwesomeIcon>
+                              <FontAwesomeIcon icon={faEdit}></FontAwesomeIcon>
                             </button>
-                              
+                            <button
+                              onClick={() => {setOpenModal(true); setCid(course.course_id);}}
+                              style={{ marginRight: "10px", backgroundColor:'white'}}
+                              className="delete-button"
+                            >
+                              <FontAwesomeIcon icon={faTrash}></FontAwesomeIcon>
+                            </button>
                             <button onClick={() => addquestions(course.course_id)}
-                            style={{
-                              backgroundColor: "#457BC1",
-                              borderRadius: "10px",
-                              color: "white",
-                              border: "none",
-                              padding: "8px",
-                              fontWeight: "500",
-                            }}
+                              style={{
+                                backgroundColor: "#457BC1",
+                                borderRadius: "10px",
+                                color: "white",
+                                border: "none",
+                                padding: "8px",
+                                fontWeight: "500",
+                              }}
                             >
                               Test
                             </button>
@@ -157,6 +181,18 @@ function Courses() {
         style={{padding:"10px"}}
       >
         <h3>Are you sure want to delete</h3>
+      </Modal>
+      <Modal
+        id="deleteAllModal"
+        open={openDeleteAllModal}
+        onOk={() => {
+          setOpenDeleteAllModal(false);
+          deleteAllCourses();
+        }}
+        onCancel={() => setOpenDeleteAllModal(false)}
+        style={{ padding: "10px" }}
+      >
+        <h3>Are you sure you want to delete <b>ALL</b> courses?</h3>
       </Modal>
     </>
   );
