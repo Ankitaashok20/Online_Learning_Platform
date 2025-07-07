@@ -61,10 +61,6 @@ This platform provides a seamless experience for both **students** and **instruc
 
 ---
 
-## 🏛 Architecture
-
----
-
 ## 🚀 Getting Started
 
 ### 🔧 Prerequisites
